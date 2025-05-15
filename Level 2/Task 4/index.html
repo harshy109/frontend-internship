@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Button</title>
+</head>
+<body style="text-align: center;">
+    <h1 style="color: purple; font-size: 40px;">Quiz app</h1>
+    <p>
+        Already an existing user?
+    </p>
+    
+    <!-- Task 3 -->
+   
+    <button onclick="changeColorofSubmitBtn()" style="border-radius: 20px; font-size: 20px; padding: 8px 20px;"  class="submit">Submit</button>
+    <button onclick="changeColorofClearBtn()" style="border-radius: 20px; font-size: 20px; padding: 8px 20px;"  class="clear">Clear</button>
+    <script>
+        const submitBtn=document.querySelector('.submit');
+        const clearBtn=document.querySelector('.clear');
+
+        function changeColorofSubmitBtn(){
+            event.target.style.backgroundColor="greenyellow"
+        }
+        function changeColorofClearBtn(){
+            event.target.style.backgroundColor="red"
+        }
+
+        submitBtn.addEventListener('click', changeColorofSubmitBtn);
+        clearBtn.addEventListener('click', changeColorofClearBtn);
+    </script>
+</body>
+</html>

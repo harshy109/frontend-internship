@@ -1,0 +1,41 @@
+body {
+  margin: auto;
+  padding: 10px;
+}
+
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #5ab4f0;
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+}
+.navbar .navbar-end {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+.navbar .navbar-end .navbar-login {
+  background-color: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+}
+.navbar .navbar-end .navbar-login a {
+  text-decoration: none;
+}
+.navbar h1 {
+  padding: 10px 20px;
+}
+
+.btn {
+  background-color: #5ab4f0;
+}/*# sourceMappingURL=task8.css.map */

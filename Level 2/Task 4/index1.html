@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interactive Button</title>
+</head>
+<body style="text-align: center;">
+    <h1 style="color: purple; font-size: 40px;">Quiz app</h1>
+    <p>
+        Click the button to change the background color
+    </p>
+    
+    <!-- Task 4 -->
+   
+    <button onclick="changeColor1()" style="color: green; border-radius: 20px; font-size: 20px; padding: 8px 20px; font-weight: bold;"  class="submit">Green</button>
+    <button onclick="changeColor2()" style="color: red; border-radius: 20px; font-size: 20px; padding: 8px 20px; font-weight: bold;"  class="clear">Red</button>
+    <script>
+        function changeColor1(){
+            document.body.style.backgroundColor="greenyellow"
+        }
+        function changeColor2(){
+            document.body.style.backgroundColor="red"
+        }
+
+    </script>
+</body>
+</html>

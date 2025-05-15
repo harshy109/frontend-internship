@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+        }
+
+        body{
+            display: flex;
+            background-color: #1e1e31;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .screenDiv{
+            margin: auto;
+            margin-top: 60px;
+            border: 2px solid #9ca3af;
+            padding: 20px;
+            border-radius: 24px;
+            width: 40%;
+            height: 60%;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            background-color: rgb(59, 64, 92);
+        }
+
+        h1{
+            text-align: center;
+            font-size:3rem;
+            color: white;
+            font-weight:800;
+            margin-top: 28px;
+            margin-bottom: 28px;
+        }
+
+        .mainBlock{
+            margin:auto;
+            display:grid;
+            width: 75%;
+        }
+
+        form{
+            display: flex;
+            margin: auto;
+            margin-top: 32px;
+            gap: 8px;
+            width: 100%;
+        }
+
+        input{
+            background-color: #e5e7eb;
+            padding: 8px;
+            padding-left: 28px;
+            width: 85%;
+            border-radius: 16px;
+            border: 2px solid #e5e7eb;
+            color: black;
+        }
+
+        button{
+            width: 25%;
+            background-color: #f59e0b;
+            padding: 8px;
+            border-radius: 16px;
+            border:none;
+            color:white;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background-color:#d97706;
+        }
+
+        .mainDiv{
+            text-align: center;
+            margin: auto;
+            margin-top: 20px;
+            border-radius: 24px;
+            padding:20px;
+            width:100%;
+            color: #f3f4f6;
+            background-color: #4b5563;
+        }
+
+        .weatherData {
+            justify-content: center;
+        }
+
+        .city-name {
+            font-size: 1.875rem;
+            font-weight: bold;
+        }
+
+        .weather-icon{
+            display: flex;
+            justify-content: center;
+        }
+
+        .weather-condition, .temperature {
+            font-size: 1.5rem;
+        }
+
+        .theme{
+            background-color: black;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+        }
+
+        @media screen and (max-width:760px){
+        .screenDiv{
+            width: 60%;
+        }
+        }
+        @media screen and (max-width:500px){
+            .form{
+                flex-wrap: wrap;
+                flex-direction: column;
+                justify-items: center;
+            }
+            .screenDiv h1{
+                font-size: 2rem;
+            }
+            .mainBlock{
+                width: 98%;
+            }
+            input{
+                padding-left: 5px;
+                width: 60%; 
+            }
+            button{
+                width: 30%;
+            }
+
+        }
+        @media screen and (max-width:900px){
+            .screenDiv{
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="screenDiv">
+        <h1>Weather App</h1>
+
+        <div class="mainBlock">
+            <form id="weatherForm">
+                <input id="cityInput" type="text" placeholder="Enter city name"/>
+                <button type="submit">Submit</button>
+            </form>
+            <!-- Weather Data Display Section -->
+            <div id="mainDiv" class="mainDiv">
+                No city data found
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const weatherForm = document.getElementById('weatherForm');
+            const cityInput = document.getElementById('cityInput');
+            const mainDiv = document.getElementById('mainDiv');
+
+            weatherForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const city = cityInput.value;
+                
+                if (city) {
+                    getData(city);
+                }
+            });
+
+            function getData(city) {
+                console.log(city);
+                
+                fetch(`https://api.weatherapi.com/v1/current.json?key=79f7a637758c41f396d150217250405&q=${city}`)
+                    .then((res) => res.json())
+                    .then((finalRes) => {
+                        console.log(finalRes);
+                        
+                        if (finalRes.code == 1006 || finalRes.error) {
+                            displayNoData();
+                        } else {
+                            displayWeatherData(finalRes);
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error in fetching API");
+                        displayNoData();
+                    });
+            
+                cityInput.value = '';
+            }
+
+            function displayWeatherData(weatherDetails) {
+                const weatherHTML = `
+                    <div class="weatherData">
+                        <p class="city-name">${weatherDetails.location.name}</p>
+                        <div class="weather-icon">
+                            <img src="https:${weatherDetails.current.condition.icon}" alt="weather icon" width="100px" />
+                        </div>
+                        <p class="weather-condition">${weatherDetails.current.condition.text}</p>
+                        <p class="temperature">Temperature: ${weatherDetails.current.temp_c}℃</p>
+                    </div>
+                `;
+                
+                mainDiv.innerHTML = weatherHTML;
+            }
+
+            function displayNoData() {
+                mainDiv.innerHTML = "No city data found";
+            }
+        });
+    </script>
+</body>
+</html>

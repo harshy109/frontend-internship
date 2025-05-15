@@ -1,0 +1,43 @@
+$primary-clr: #5ab4f0;
+$font-color: #fff;
+
+@mixin flex-box($alignment){
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: $alignment;
+    align-items: center;
+}
+body{
+    margin: auto;
+    padding: 10px;}
+
+.navbar{
+    @include flex-box(space-between);
+    background-color: $primary-clr;
+    color: $font-color;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    .navbar-end{
+        @include flex-box(space-between);
+        gap: 15px
+    }
+    .navbar-end{
+        .navbar-login{
+            background-color: $font-color;
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            a{
+                text-decoration: none;
+            }
+        }
+    }
+    h1{
+        padding: 10px 20px;
+    }
+}
+.btn{
+    background-color: $primary-clr;
+}
