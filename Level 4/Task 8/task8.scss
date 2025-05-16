@@ -1,26 +1,44 @@
 $primary-clr: #5ab4f0;
 $font-color: #fff;
+$tertiary-clr: #5ab4f01e;;
 
-@mixin flex-box($alignment){
+@mixin flex-box($alignment,$direction){
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
+    flex-direction: $direction;
     justify-content: $alignment;
     align-items: center;
+    padding: 10px;
 }
 body{
     margin: auto;
-    padding: 10px;}
+}
 
 .navbar{
-    @include flex-box(space-between);
+    @include flex-box(space-between, row);
     background-color: $primary-clr;
     color: $font-color;
     text-decoration: none;
     display: flex;
     justify-content: space-between;
+    font-weight: 600;
+    .navbar-start{
+        @include flex-box(center, row); 
+        gap: 15px;
+        .navbar-brand{
+            height: 40px;
+            padding: 0px;
+            .navhead{
+                font-size: 2rem;
+                margin: auto;
+                margin-top: 0px; 
+                padding: 0px;
+                color: $font-color;
+            }
+        }
+    }
     .navbar-end{
-        @include flex-box(space-between);
+        @include flex-box(space-between, row);
         gap: 15px
     }
     .navbar-end{
@@ -31,6 +49,7 @@ body{
             text-decoration: none;
             a{
                 text-decoration: none;
+                color: $primary-clr;
             }
         }
     }
@@ -41,3 +60,45 @@ body{
 .btn{
     background-color: $primary-clr;
 }
+.main-section{
+    
+    margin: auto;
+    @include flex-box(center, column);
+    h1{
+        font-weight: 400;
+        margin-top: 40px;
+    }
+}
+
+.cards{
+    @include flex-box(center,row);
+    gap: 20px;
+    margin: auto;
+    margin-top: 30px;
+    .row-cols-2{
+        @include flex-box(center, row);
+        gap: 20px;
+        margin: auto;
+    }
+    .card{
+        @include flex-box(center, column);
+        background-color: $tertiary-clr;
+        padding: 10px 20px;
+        border-radius: 10px;
+        width: 270px;
+        height: 100px;
+        text-align: center;
+        font-size: 1rem;
+        font-weight: 100;
+        img{
+            position: absolute;
+            width: 35px;
+            padding: 10px;
+            border-radius: 20px;
+            background-color: white;
+            bottom: 10px;
+            right: 10px;
+        }
+    }
+}
+

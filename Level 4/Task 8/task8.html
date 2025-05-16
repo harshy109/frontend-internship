@@ -9,11 +9,12 @@
 </head>
 <body>
     <!-- Used SASS with basic UI -->
-    <nav>
-        <div class="navbar navbar-expand-lg">
-            <div class="navbar-start">
-                <a class="navbar-head" href="#">YourBuddy</a>   
+    <nav class="navbar">
+        <div class="navbar-start">
+            <div class="navbar-brand"> 
+                <h3 class="navhead">YourBuddy</h3>
             </div>
+        </div>
             <div class="navbar-end">
                 <a class="navbar" href="#">Home</a>
                 <a class="navbar" href="#">About</a>
@@ -22,12 +23,35 @@
                     <a href="#">Login</a>
                 </div>
             </div>
-        </div>
+        
     </nav>
     <div class="main-section">
-        <h1>Welcome to <span style="color: red;">YourBuddy</span></h1>
+        <h1>Welcome to <span style="color: rgb(55, 185, 255);">YourBuddy</span></h1>
         <p>Your one-stop solution for all your needs.</p>
         <button class="btn">Get Started</button>
+    </div>
+    <div class="cards d-grid">
+        <div class="row-cols-2">
+                <div class="card ">
+                <p>Let's talk about your day</p>
+                <img src="images/comments-solid.svg" alt="" />
+                </div>
+                <div class="card">
+                <p>Self-care tips</p>
+                <img src="images/shield-heart-solid.svg" alt="" />
+                </div>
+        </div>
+        <div class ="row-cols-2">
+            <div class="card">
+              <p>Brainstorm relationships</p>
+              <img src="images/user-group-solid.svg" alt="" />
+            </div>
+            <div class="card">
+              <p>Write a journal</p>
+              <img src="images/pen-clip-solid.svg" alt="" />
+            </div>
+        </div>
+        
     </div>
 </body>
 </html>
